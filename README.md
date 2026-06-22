@@ -29,7 +29,7 @@ Some advanced features are experimental and may require additional testing on di
 
 Download the latest APK from GitHub Releases:
 
-https://github.com/erogames1123-debug/NovariaMC/releases/latest
+https://github.com/ErogamesMC/NovariaMC/releases/latest
 
 ## Support
 
