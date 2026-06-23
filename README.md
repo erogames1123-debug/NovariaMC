@@ -31,6 +31,12 @@ Download the latest APK from GitHub Releases:
 
 https://github.com/ErogamesMC/NovariaMC/releases/latest
 
+## Guide
+
+New users should start here:
+
+https://github.com/ErogamesMC/NovariaMC/blob/main/GUIDE.md
+
 ## Support
 
 If you want to support development, you can donate through Ko-fi:
