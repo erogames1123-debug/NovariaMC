@@ -1,127 +1,127 @@
-# NovariaMC Guide
+# Guia de NovariaMC
 
-This guide explains the basic workflow for installing NovariaMC, preparing dependencies, creating a server, and opening it from a PC or Minecraft client.
+Esta guia explica el flujo basico para instalar NovariaMC, preparar dependencias, crear un servidor y abrirlo desde una PC o un cliente de Minecraft.
 
-NovariaMC is still in active development, so some screens may change over time.
+NovariaMC sigue en desarrollo activo, asi que algunas pantallas pueden cambiar con el tiempo.
 
-## 1. Install The App
+## 1. Instalar la app
 
-1. Download the latest APK from the Releases page:
+1. Descarga el APK mas reciente desde la pagina de Releases:
    https://github.com/ErogamesMC/NovariaMC/releases/latest
-2. Install the APK on your Android device.
-3. Open NovariaMC.
-4. If Android asks for permissions, allow the ones required for file access, network access, and background operation.
+2. Instala el APK en tu dispositivo Android.
+3. Abre NovariaMC.
+4. Si Android pide permisos, permite los necesarios para acceso a archivos, acceso a red y funcionamiento en segundo plano.
 
-## 2. Install Dependencies
+## 2. Instalar dependencias
 
-Open the dependencies screen from the download button in the top bar.
+Abre la pantalla de dependencias desde el boton de descarga en la barra superior.
 
-Recommended setup:
+Configuracion recomendada:
 
-- Install Java 21 for modern Paper, Fabric, NeoForge, and recent Minecraft versions.
-- Install Java 8 only when working with older Forge or legacy servers.
-- Install Playit if you want friends outside your local network to connect.
-- Install Chunker if you plan to import or convert Bedrock `.mcworld` worlds.
+- Instala Java 21 para Paper, Fabric, NeoForge modernos y versiones recientes de Minecraft.
+- Instala Java 8 solo cuando trabajes con Forge antiguo o servidores legacy.
+- Instala Playit si quieres que amigos fuera de tu red local se conecten.
+- Instala Chunker si planeas importar o convertir mundos Bedrock `.mcworld`.
 
-If a dependency fails, reinstall it from this screen before creating or starting a server.
+Si una dependencia falla, reinstalala desde esta pantalla antes de crear o iniciar un servidor.
 
-## 3. Create A Server
+## 3. Crear un servidor
 
-1. Tap the `+` button on the main screen.
-2. Choose the server type and Minecraft version.
-3. Wait for NovariaMC to download and prepare the server.
-4. Open the server console.
-5. Start the server.
+1. Toca el boton `+` en la pantalla principal.
+2. Elige el tipo de servidor y la version de Minecraft.
+3. Espera a que NovariaMC descargue y prepare el servidor.
+4. Abre la consola del servidor.
+5. Inicia el servidor.
 
-The first start can take longer because Minecraft generates folders, settings, worlds, and cache files.
+El primer inicio puede tardar mas porque Minecraft genera carpetas, ajustes, mundos y archivos de cache.
 
-## 4. Manage The Server
+## 4. Gestionar el servidor
 
-From the server management screen you can:
+Desde la pantalla de gestion del servidor puedes:
 
-- Edit server settings.
-- Change RAM, players, view distance, simulation distance, difficulty, PvP, and other options.
-- Manage files.
-- Manage worlds.
-- Import `.mcworld` files.
-- Create and restore backups.
-- Browse mods or plugins when supported by the server type.
+- Editar los ajustes del servidor.
+- Cambiar RAM, jugadores, distancia de vision, distancia de simulacion, dificultad, PvP y otras opciones.
+- Gestionar archivos.
+- Gestionar mundos.
+- Importar archivos `.mcworld`.
+- Crear y restaurar copias de seguridad.
+- Buscar mods o plugins cuando el tipo de servidor lo soporte.
 
-Stop the server before replacing worlds, changing important files, or modifying large mod/plugin setups.
+Deten el servidor antes de reemplazar mundos, cambiar archivos importantes o modificar configuraciones grandes de mods/plugins.
 
-## 5. Use The Local Web Panel
+## 5. Usar el panel web local
 
-The local web panel lets you manage the server from a PC on the same Wi-Fi network.
+El panel web local te permite gestionar el servidor desde una PC en la misma red Wi-Fi.
 
-1. Open the server console in NovariaMC.
-2. Tap `Panel local para PC`.
-3. Copy the LAN link.
-4. Open that link from your PC browser.
+1. Abre la consola del servidor en NovariaMC.
+2. Toca `Panel local para PC`.
+3. Copia el enlace LAN.
+4. Abre ese enlace desde el navegador de tu PC.
 
-The phone and PC must be connected to the same local network.
+El telefono y la PC deben estar conectados a la misma red local.
 
-## 6. Public Access With Playit
+## 6. Acceso publico con Playit
 
-Playit allows people outside your local network to connect.
+Playit permite que personas fuera de tu red local se conecten.
 
-Basic flow:
+Flujo basico:
 
-1. Install Playit from dependencies.
-2. Open a server console.
-3. Open the Playit tab.
-4. Claim or configure the Playit agent.
-5. Start the server and keep Playit active.
+1. Instala Playit desde dependencias.
+2. Abre la consola de un servidor.
+3. Abre la pestaña de Playit.
+4. Reclama o configura el agente de Playit.
+5. Inicia el servidor y manten Playit activo.
 
-If Playit says the agent has no tunnels assigned, open the Playit account page and assign the tunnel to the current agent.
+Si Playit dice que el agente no tiene tuneles asignados, abre la pagina de cuenta de Playit y asigna el tunel al agente actual.
 
-## 7. Import Worlds
+## 7. Importar mundos
 
-For Bedrock `.mcworld` files:
+Para archivos Bedrock `.mcworld`:
 
-1. Stop the server.
-2. Open the server file manager or world tools.
-3. Upload the `.mcworld`.
-4. NovariaMC will import or convert it when supported.
-5. Start the server again.
+1. Deten el servidor.
+2. Abre el gestor de archivos del servidor o las herramientas de mundos.
+3. Sube el `.mcworld`.
+4. NovariaMC lo importara o convertira cuando sea compatible.
+5. Inicia el servidor otra vez.
 
-Large worlds can take several minutes to process.
+Los mundos grandes pueden tardar varios minutos en procesarse.
 
-## 8. Common Issues
+## 8. Problemas comunes
 
-### The server does not start
+### El servidor no inicia
 
-- Check that the correct Java runtime is installed.
-- Open the console and read the first error shown.
-- Try lowering the assigned RAM.
-- Make sure the server version matches the selected runtime.
+- Verifica que el runtime Java correcto este instalado.
+- Abre la consola y lee el primer error mostrado.
+- Intenta bajar la RAM asignada.
+- Asegurate de que la version del servidor coincida con el runtime seleccionado.
 
-### Friends cannot connect
+### Mis amigos no se pueden conectar
 
-- Confirm the server is running.
-- Confirm Playit is running if they are outside your Wi-Fi network.
-- Check that the tunnel points to the correct local port.
-- For Bedrock-compatible setups, verify the correct Bedrock port.
+- Confirma que el servidor este encendido.
+- Confirma que Playit este activo si estan fuera de tu red Wi-Fi.
+- Revisa que el tunel apunte al puerto local correcto.
+- Para configuraciones compatibles con Bedrock, verifica el puerto Bedrock correcto.
 
-### The app feels slow
+### La app se siente lenta
 
-- Lower RAM, view distance, and simulation distance.
-- Close other apps.
-- Keep the phone cool and connected to power for larger servers.
-- Prefer lightweight server types when using lower-end devices.
+- Baja la RAM, la distancia de vision y la distancia de simulacion.
+- Cierra otras apps.
+- Mantene el telefono fresco y conectado a la corriente para servidores mas grandes.
+- Prefiere tipos de servidor ligeros cuando uses dispositivos de gama baja.
 
-### A modpack does not work
+### Un modpack no funciona
 
-- Confirm it supports the server version and loader.
-- Check if it is client-only.
-- Make sure required dependencies are installed.
-- Read the server console logs for missing mods or incompatible versions.
+- Confirma que soporte la version del servidor y el loader.
+- Revisa si es solo para cliente.
+- Asegurate de que las dependencias requeridas esten instaladas.
+- Lee los logs de la consola del servidor para detectar mods faltantes o versiones incompatibles.
 
-## 9. Support Development
+## 9. Apoyar el desarrollo
 
-If NovariaMC helps you, you can support development through Ko-fi:
+Si NovariaMC te ayuda, puedes apoyar el desarrollo mediante Ko-fi:
 
 https://ko-fi.com/uwuzzi
 
-## 10. Disclaimer
+## 10. Aviso legal
 
-NovariaMC is an independent project and is not affiliated with Mojang, Microsoft, Minecraft, PaperMC, GeyserMC, Playit, or other third-party projects used or supported by the app.
+NovariaMC es un proyecto independiente y no esta afiliado con Mojang, Microsoft, Minecraft, PaperMC, GeyserMC, Playit ni otros proyectos de terceros usados o soportados por la app.
