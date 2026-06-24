@@ -1,0 +1,81 @@
+name: Discord Release Notifier
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord Embed
+        uses: actions/github-script@v7
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        with:
+          script: |
+            const webhookUrl = process.env.DISCORD_WEBHOOK_URL;
+            if (!webhookUrl) {
+              throw new Error("Falta la variable DISCORD_WEBHOOK_URL");
+            }
+            
+            const release = context.payload.release;
+            const title = release.name || release.tag_name;
+            let desc = release.body || "Sin descripción disponible.";
+            if (desc.length > 1500) {
+              desc = desc.substring(0, 1497) + "...";
+            }
+            
+            // Formatear la fecha
+            const dateObj = new Date(release.published_at);
+            const dateStr = dateObj.toLocaleDateString("es-ES", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              timeZone: "UTC"
+            }) + " UTC";
+            
+            // Formatear la lista de descargas
+            let assetsList = "No hay archivos adjuntos. Ver en [GitHub](<" + release.html_url + ">)";
+            if (release.assets && release.assets.length > 0) {
+              assetsList = release.assets.map(asset => {
+                const sizeMB = (asset.size / (1024 * 1024)).toFixed(2);
+                return `🔹 [${asset.name}](${asset.browser_download_url}) (${sizeMB} MB)`;
+              }).join("\n");
+            }
+            
+            const payload = {
+              embeds: [{
+                title: "🚀 " + title,
+                url: release.html_url,
+                description: desc,
+                color: 3066993, // Verde Esmeralda
+                fields: [
+                  { name: "🏷️ Versión", value: "`" + release.tag_name + "`", inline: true },
+                  { name: "📅 Publicado", value: "`" + dateStr + "`", inline: true },
+                  { name: "📥 Descargas Directas", value: assetsList, inline: false }
+                ],
+                footer: {
+                  text: "GitHub Releases • " + context.repo.repo,
+                  icon_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                },
+                author: {
+                  name: release.author.login,
+                  icon_url: release.author.avatar_url,
+                  url: release.author.html_url
+                }
+              }]
+            };
+            
+            const response = await fetch(webhookUrl, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(payload)
+            });
+            
+            if (!response.ok) {
+              throw new Error("Discord API respondió con código: " + response.status);
+            }
+            console.log("Notificación enviada a Discord exitosamente.");
