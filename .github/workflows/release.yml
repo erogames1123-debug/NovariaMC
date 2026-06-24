@@ -1,0 +1,30 @@
+name: Publish APK release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Publish GitHub release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: NovariaMC-*.apk
+          body: |
+            Actualizacion de pulido visual y experiencia.
+
+            Cambios principales:
+            - Cards de ajustes con estilo mas consistente.
+            - Constructor MOTD integrado al nuevo diseno.
+            - Cards de CPU Java y Version de Java unificadas visualmente.
+            - Pantalla de Dependencias pulida con contenedores y estados mas limpios.
+            - Mantiene el sistema de actualizaciones basado en GitHub Releases.
