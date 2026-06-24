@@ -21,19 +21,37 @@ jobs:
             
             const release = context.payload.release;
             const title = release.name || release.tag_name;
-            const desc = release.body || "Sin descripción.";
+            const desc = release.body || "Sin descripción disponible.";
+            
+            // Formatear la fecha exactamente igual: dd/MM/yyyy HH:mm
+            const dateObj = new Date(release.published_at);
+            const pad = (num) => num.toString().padStart(2, "0");
+            const dateStr = `${pad(dateObj.getUTCDate())}/${pad(dateObj.getUTCMonth() + 1)}/${dateObj.getUTCFullYear()} ${pad(dateObj.getUTCHours())}:${pad(dateObj.getUTCMinutes())}`;
+            
+            // Formatear descargas con guión simple
+            let assetsList = "No hay archivos adjuntos. Ver en [GitHub](<" + release.html_url + ">)";
+            if (release.assets && release.assets.length > 0) {
+              assetsList = release.assets.map(asset => {
+                const sizeMB = (asset.size / (1024 * 1024)).toFixed(2);
+                return `- [${asset.name}](${asset.browser_download_url}) (${sizeMB} MB)`;
+              }).join("\n");
+            }
             
             const payload = {
               embeds: [{
-                title: title,
+                title: "Release: " + title,
                 url: release.html_url,
-                description: "**Versión:** `" + release.tag_name + "`\n\n" + desc,
-                color: 5814783, // Color Blurple de Discord
-                author: {
-                  name: release.author.login,
-                  icon_url: release.author.avatar_url
-                },
-                timestamp: release.published_at
+                description: desc,
+                color: 3066993, // Verde Esmeralda
+                fields: [
+                  { name: "Version", value: release.tag_name, inline: true },
+                  { name: "Publicado", value: dateStr, inline: true },
+                  { name: "Descargas", value: assetsList, inline: false }
+                ],
+                footer: {
+                  text: "GitHub Releases - " + context.repo.repo,
+                  icon_url: "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                }
               }]
             };
             
@@ -47,4 +65,5 @@ jobs:
               throw new Error("Discord API respondió con código: " + response.status);
             }
             console.log("Notificación enviada a Discord exitosamente.");
+
 
